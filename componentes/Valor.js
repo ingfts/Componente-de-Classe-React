@@ -8,9 +8,11 @@ export default function Valor(props){
     return (
 
         <>
-        <label> valor </label><input type="text" name = {props.name} value = {props.value} onChange= {props.handleChange} ></input><br/>
 
-   
+      <h1> Este h1 vem do 'Valor.js' </h1>
+      {props.children[0]}
+      {props.children[1]}
+      {props.pai}
 
         </>
     )
