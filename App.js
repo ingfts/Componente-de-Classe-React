@@ -1,25 +1,30 @@
 
-import React, { useCallback, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import './App.css'
-import Valor from './componentes/Valor'
-import Resultado from './componentes/Resultado'
+
 
 
 
 
 export default function App(){
 
+const [contagem, setContagem] = useState(0) 
 
-  
+useEffect(
+  // ()=>console.log("pagina atualizada"),
+  ()=>window.alert("pagina atualizada " + contagem + ' vezes')
+
+)
+
+useEffect(
+  ()=>console.log("pagina atualizada " + contagem + ' vezes')
+)
 
  return (
     <>
-    <Valor pai = "Valor Pai">
-      <h2> este é um h2 filho</h2>
-      <p> este é um p filho</p>
-      
-    </Valor>
-    
+
+    <p>Numero de carregamentos: {contagem}</p>
+    <button onClick={()=>setContagem(contagem + 1)}>Contar</button>
     
     </>
     
