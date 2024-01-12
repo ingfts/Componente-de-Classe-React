@@ -1,6 +1,7 @@
 
 import React, {useEffect, useState } from 'react'
 import './App.css'
+import { keyboard } from '@testing-library/user-event/dist/keyboard'
 
 
 
@@ -8,23 +9,38 @@ import './App.css'
 
 export default function App(){
 
-const [contagem, setContagem] = useState(0) 
 
-useEffect(
-  // ()=>console.log("pagina atualizada"),
-  ()=>window.alert("pagina atualizada " + contagem + ' vezes')
+const [senha, setSenha] = useState()
 
-)
+const handleChange=(x)=>{
+  return setSenha(x.target.value)
 
-useEffect(
-  ()=>console.log("pagina atualizada " + contagem + ' vezes')
-)
+}
+
+
+const gravar_senha=(keyPass, keyValue)=>{
+  localStorage.setItem(keyPass, keyValue)
+}
+
+const ver_senha =(keyPass)=>{
+  alert(localStorage.getItem(keyPass))
+}
+
+const deletar_senha=(keyPass)=>{
+  localStorage.removeItem(keyPass)
+
+}
 
  return (
     <>
-
-    <p>Numero de carregamentos: {contagem}</p>
-    <button onClick={()=>setContagem(contagem + 1)}>Contar</button>
+    <main className='main'>
+      <p>Definição de senha</p>
+    <input type='password' placeholder='Enter your password' onChange={handleChange}></input>
+    <button onClick={()=>gravar_senha('keyPass', senha)}>Gravar senha</button>
+    <button onClick={()=>ver_senha('keyPass', senha)}>Ver senha</button>
+    <button onClick={()=>deletar_senha('keyPass', senha)}>Deletar senha</button>
+    </main>
+   
     
     </>
     
